@@ -6,8 +6,8 @@ export default function Home() {
 
 
     return (
-        <main className="flex px-4 py-4 flex-col w-full items-center justify-between h-[100svh] bg-gray-bg gap-6">
-            <div className="flex flex-col items-center justify-between lex-1 h-1/2">
+        <main className="flex px-4 py-4 flex-col w-full items-center justify-between h-[100svh] bg-gray-bg gap-3">
+            <div className="flex flex-col items-center justify-between h-1/2">
                 <Scramble />
                 <Timer />
             </div>

@@ -15,16 +15,16 @@ export const ScrambleButton = ({ scramble }: { scramble: string }) => {
 
     switch (type) {
         case '7x7':
-            fontSize = 'sm'
+            fontSize = 'sm 2xl:text-base'
             break;
         case '6x6':
-            fontSize = 'base'
+            fontSize = 'base 2xl:text-xl'
             break;
         case '5x5':
             fontSize = 'xl'
             break;
         case 'megaminx':
-            fontSize = 'sm text-justify '
+            fontSize = 'sm 2xl:text-xl text-justify '
             let scrambleArr = scramble.split(' ')
             let output: string[] = []
             let count = false
@@ -39,7 +39,7 @@ export const ScrambleButton = ({ scramble }: { scramble: string }) => {
             break;
 
         default:
-            fontSize = 'xl'
+            fontSize = 'xl 2xl:text-3xl'
             break;
     }
     return (

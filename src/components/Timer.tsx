@@ -84,7 +84,7 @@ export const Timer = () => {
 
     return (
         <>
-            <div className={`${reddit_Mono.className} text-[116px] 2xl:text-[214px] ${!isSolving && isKeyDown && "text-red-700"}`}>
+            <div className={`${reddit_Mono.className} text-[116px] 2xl:text-[214px] max-h-[200px] flex justify-center items-center ${!isSolving && isKeyDown && "text-red-700"}`}>
                 {time.split('.')[0]}.<span className="text-[80px]">{time.split('.')[1]}</span>
             </div>
             <SolveControls />

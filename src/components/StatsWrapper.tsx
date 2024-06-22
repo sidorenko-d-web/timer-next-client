@@ -1,7 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import { SessionStats } from './SessionStats'
-import { ScrambleImage } from './ScrambleImage'
 import { SolvesList } from './SolvesList'
 import { useTimerStorage } from '@/hooks/storages'
 import { Solve } from '@/classes/Solve'
@@ -40,7 +39,7 @@ export const StatsWrapper = () => {
             <div className=" bg-dark-gray-bg rounded-xl px-6 py-4 flex flex-1 gap-2 w-full 2xl:text-2xl h-full">
                 <SessionStats solves={solves} />
                 <SolvesList solves={solves} setSolves={setSolves}/>
-            <CurrentSession />
+                <CurrentSession />
             </div>
         </div>
     )
