@@ -17,7 +17,7 @@ const config: Config = {
       },
     },
     colors:{
-      'gray-bg':'#1A1A1A',
+      'gray-bg':'#1f1f1f',
       'dark-gray-bg':'#131313',
       'best-time-color':'#35973F',
       'violet-dec':'#CA34C4',

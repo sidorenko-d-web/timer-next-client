@@ -2,7 +2,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 
 import { SolveControls } from './SolveControls'
-import { useSpaceState, useTimerStorage } from '@/hooks/storages'
 import { Reddit_Mono } from 'next/font/google'
 import { Solve } from '@/classes/Solve'
 
@@ -13,8 +12,6 @@ const reddit_Mono = Reddit_Mono({
 
 export const Timer = () => {
 
-    const {currentScramble, setCurrentSolve, currentSolve} = useTimerStorage()
-    const {isKeyDown, setIsKeyDown} = useSpaceState()
     
     const [isSolving, setIsSolving] = useState<boolean>(false)
     const [timerStopped, setTimerStopped] = useState<boolean>(false)
@@ -24,17 +21,8 @@ export const Timer = () => {
 
     const keyDown = (e: KeyboardEvent) => {
         if (e.code === 'Space') {
-            setIsKeyDown(true)
             if (isSolving) {
                 clearInterval(intervalId.current)
-                if(!timerStopped){
-                    setCurrentSolve(new Solve(
-                        dateTime,
-                        new Date().getTime(),
-                        currentScramble,
-                        ''
-                    ))
-                }
                 setTimerStopped(true)
             }
 
@@ -42,7 +30,6 @@ export const Timer = () => {
     }
     const keyUp = (e: KeyboardEvent) => {
         if (e.code === 'Space') {
-            setIsKeyDown(false)
             if (!isSolving) {
                 setIsSolving(true)
                 const startTime = new Date().getTime()
@@ -63,13 +50,7 @@ export const Timer = () => {
         return diff.timeToString()
     }
 
-    useEffect(() => {
-        if(currentSolve){
-            setTime(currentSolve.timeToString())
-        }else{
-            setTime('0.000')
-        }
-    }, [currentSolve])
+  
 
 
     useEffect(() => {
@@ -84,7 +65,7 @@ export const Timer = () => {
 
     return (
         <>
-            <div className={`${reddit_Mono.className} text-[116px] 2xl:text-[214px] max-h-[200px] flex justify-center items-center ${!isSolving && isKeyDown && "text-red-700"}`}>
+            <div className={`${reddit_Mono.className} text-[116px] 2xl:text-[214px] max-h-[200px] flex justify-center items-center`}>
                 {time.split('.')[0]}.<span className="text-[80px]">{time.split('.')[1]}</span>
             </div>
             <SolveControls />
