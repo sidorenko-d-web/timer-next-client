@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Settings } from "./Settings";
 
-export function SettingsPopUp({}: {}) {
+export function SettingsPopUp() {
   const [windowSettings, setWindowSettings] = useState<string>("Account");
+
   return (
     <div className=" absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-dark-gray-bg w-9/12 h-5/6 z-[200] rounded-3xl flex flex-col">
       <nav className="">

@@ -3,31 +3,30 @@ import React, { useState } from "react";
 export default function Popup({
   ButtonItem,
   PopupItem,
+  buttonStyle,
 }: {
-  ButtonItem: React.JSX.Element;
-  PopupItem: React.JSX.Element;
+  ButtonItem: React.JSX.Element | string;
+  PopupItem: React.ElementType<{setIsShowed?: React.Dispatch<React.SetStateAction<boolean>>}>;
+  buttonStyle?: string;
 }) {
   const [isShowed, setIsShowed] = useState(false);
   return (
-    <>
-      <button
-        onClick={() => setIsShowed(true)}
-        className="flex items-end text-xl gap-8"
-      >
+    <div>
+      <button onClick={() => setIsShowed(true)} className={buttonStyle}>
         {ButtonItem}
       </button>
 
       {isShowed && (
-        <div className="fixed top-0 left-0 w-[100svw] h-[100svh] z-20">
+        <div className={`fixed top-0 left-0 w-[100svw] h-[100svh] z-20 `}>
           {/* bg */}
-          <div
-            className=" absolute top-0 left-0 z-[100] bg-black/50  w-[100svw] h-[100svh]"
+          <button
+            className=" absolute top-0 left-0 z-[60] bg-black/50  w-[100svw] h-[100svh]"
             onClick={() => setIsShowed(false)}
-          ></div>
+          ></button>
           {/* settings window */}
-          {PopupItem}
+          {<PopupItem setIsShowed={setIsShowed}/>}
         </div>
       )}
-    </>
+    </div>
   );
 }

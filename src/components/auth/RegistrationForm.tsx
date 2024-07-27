@@ -1,7 +1,7 @@
 'use client'
-import React from 'react'
+import type { Dispatch,  SetStateAction } from 'react'
 
-export const RegistrationForm = () => {
+export const RegistrationForm = ({setIsRegistered}: {setIsRegistered: Dispatch<SetStateAction<boolean>>}) => {
     return (
         <form className="bg-gray-bg flex z-40 flex-col p-8 w-3/12 rounded-3xl" >
             <h1 className=" text-4xl text-center font-semibold mb-6">Register</h1>
@@ -14,7 +14,7 @@ export const RegistrationForm = () => {
             <label className=" text-xl mb-2 ml-1" htmlFor="pass">Repeat password</label>
             <input className=" bg-dark-gray-bg rounded-xl px-4 py-2 mb-6 outline-none" type="pass" id='pass'   />
             <button className=" bg-best-time-color rounded-full py-2">Register</button>
-            <button type="button"  className=" underline text-sm text-trueGray-400 mt-4">Already have an account? Click here</button>
+            <button onClick={() => setIsRegistered(true)} type="button"  className=" underline text-sm text-trueGray-400 mt-4">Already have an account? Click here</button>
         </form>
     )
 }

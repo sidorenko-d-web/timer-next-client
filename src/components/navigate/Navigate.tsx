@@ -33,7 +33,7 @@ export const Navigate = () => {
           <li className="hover:border-l-8 hover:pl-4 border-green-600 transition-all">
             <Popup
               ButtonItem={<NavigateItem icon={faGear} value="Settings" />}
-              PopupItem={<SettingsPopUp />}
+              PopupItem={SettingsPopUp}
             />
           </li>
         </ul>
