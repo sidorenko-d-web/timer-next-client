@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AccountSettings } from "./settings/AccountSettings";
+import { AccountSettings } from "../../app/settings/AccountSettings";
 
 export const Settings = ({ windowSettings }: { windowSettings: string }) => {
   switch (windowSettings) {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { SessionItem } from "./SessionItem";
+import { SessionItem } from "./session-toggler/SessionItem";
 
 const sessions = [
   { name: "2x2", type: "2x2" },

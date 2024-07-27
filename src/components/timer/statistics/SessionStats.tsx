@@ -1,8 +1,8 @@
 "use client";
 import { Solve } from "@/classes/Solve";
-import { SingleSolve } from "./sessionStats/SingleSolve";
-import { Mo3 } from "./sessionStats/Mo3";
-import { Avg } from "./sessionStats/Avg";
+import { SingleSolve } from "./statistic-items/SingleSolve";
+import { Mo3 } from "./statistic-items/Mo3";
+import { Avg } from "./statistic-items/Avg";
 
 export const SessionStats = () => {
   return (
