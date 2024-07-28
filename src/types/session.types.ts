@@ -8,4 +8,4 @@ export interface ISessionResponse{
   solves: ISolveResponse[] 
 }
 
-export type TypeSessionRequest = Partial<Omit<ISessionResponse, 'id' | 'solves'>>
+export type TypeSessionRequest = Partial<Omit<ISessionResponse, 'id' | 'solves'| 'userId'>>
