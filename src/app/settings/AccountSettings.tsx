@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useLogout } from "../../hooks/useLogout";
 
 export const AccountSettings = () => {
+  const { logout } = useLogout()
   return (
     <>
       <div className=" bg-gray-bg h-full rounded-b-3xl flex pt-6 px-8 gap-12">
@@ -37,6 +39,9 @@ export const AccountSettings = () => {
           </div>
         </div>
       </div>
+      <button onClick={() => logout()} className="absolute bottom-8 left-8 bg-violet-dec px-10 py-3 text-xl rounded-xl">
+        Logout
+      </button>
       <button className="absolute bottom-8 right-8 bg-best-time-color px-10 py-3 text-xl rounded-xl">
         Save settings
       </button>

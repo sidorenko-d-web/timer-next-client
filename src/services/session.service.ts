@@ -14,18 +14,18 @@ class SessionService {
     return res
   }
   
-  async getSessionOfUser(id: string){
-    const res = await axiosWithAuth.get<ISessionResponse>(`${this.BASE_URL}/${id}`)
+  async getSessionOfUser(sessionName: string){
+    const res = await axiosWithAuth.get<ISessionResponse>(`${this.BASE_URL}/${sessionName}`)
     return res
   }
   
-  async updateSession(id: string, data: TypeSessionRequest){
-    const res = await axiosWithAuth.put<ISessionResponse>(`${this.BASE_URL}/${id}`, data)
+  async updateSession(sessionName: string, data: TypeSessionRequest){
+    const res = await axiosWithAuth.put<ISessionResponse>(`${this.BASE_URL}/${sessionName}`, data)
     return res
   }
   
-  async deleteSession(id: string){
-    const res = await axiosWithAuth.delete<ISessionResponse>(`${this.BASE_URL}/${id}`)
+  async deleteSession(sessionName: string){
+    const res = await axiosWithAuth.delete<ISessionResponse>(`${this.BASE_URL}/${sessionName}`)
     return res
   }
 }

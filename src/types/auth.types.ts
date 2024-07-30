@@ -7,6 +7,7 @@ export interface IRegform {
   nick: string,
 	email: string
 	password: string
+	passwordRepeat: string
 }
 
 export interface IUser {

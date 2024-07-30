@@ -4,8 +4,11 @@ export interface ISessionResponse{
   id: string;
   userId: string;
   name: string;
-  scrambleType: string;
+  scrambleType: string
   solves: ISolveResponse[] 
 }
 
-export type TypeSessionRequest = Partial<Omit<ISessionResponse, 'id' | 'solves'| 'userId'>>
+export type TypeSessionRequest = {
+  name: string;
+  scrambleType?: string
+}

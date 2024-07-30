@@ -3,9 +3,10 @@ import type { IAuthResponse, ILoginform, IRegform } from '@/types/auth.types'
 import { axiosClassic } from '@/api/interceptors'
 
 import { removefromStorage, saveTokenStorage } from './auth-token.service'
+import { MutationFunction } from '@tanstack/react-query'
 
 export const authService = {
-	async main(type: 'login' | 'register', data: ILoginform | IRegform) {
+	async main(type: 'login' | 'register', data: ILoginform | IRegform){
 		const response = await axiosClassic.post<IAuthResponse>(
 			`/auth/${type}`,
 			data
