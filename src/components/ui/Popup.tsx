@@ -17,7 +17,6 @@ export default function Popup({
   const {setPopupStatus} = usePopupStatus()
 
 	useEffect(() => {
-		console.log(isShowed)
 		setPopupStatus(isShowed)
 	}, [isShowed])
 	return (

@@ -11,6 +11,8 @@ export function useLogout(){
     mutationFn: () => authService.logout(),
     onSuccess: () =>  {
       push('/auth')
+      localStorage.removeItem('sessionName')
+      localStorage.removeItem('scrambleType')
     }
   })
 
