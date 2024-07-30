@@ -49,6 +49,9 @@ export default function useMutateSession(
 			setSessionName(data.data.name)
 			setIsShowed(false)
 			queryClient.invalidateQueries({ queryKey: ['sessions'] })
+		},
+		onError(error){
+			console.log(error)
 		}
 	})
 

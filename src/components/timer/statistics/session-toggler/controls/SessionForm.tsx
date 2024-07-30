@@ -49,7 +49,8 @@ export default function SessionForm({
 			onSubmit={handleSubmit(onSubmit)}
 			className={`flex flex-col px-8 py-4 text-2xl ${!isUpdate && 'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-bg w-4/12 m-auto z-[100] rounded-xl'}`}
 		>
-			{updateError && <label htmlFor='name'>Name should be unique</label>}
+      {/* @ts-ignore */}
+			{updateError && <label htmlFor='name' className='text-red-500'>{updateError.response.data.message}</label>}
 			<label htmlFor='name'>
 				{isUpdate ? 'New name for session' : 'Name for session'}
 			</label>
