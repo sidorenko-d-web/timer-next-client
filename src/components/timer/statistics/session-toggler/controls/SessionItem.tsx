@@ -1,6 +1,7 @@
 'use clietn'
 
 import { useSessionStore } from '@/hooks/storages'
+import { useQueryClient } from '@tanstack/react-query'
 
 export const SessionItem = ({
 	sessionName,

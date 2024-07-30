@@ -1,10 +1,17 @@
 import { useEffect } from 'react'
 
+import { useSessionStore } from './storages'
+
 export function useLocalStorage() {
+	const { sessionName, scrambleType, setSessionName, setScrambleType } =
+		useSessionStore()
+
 	useEffect(() => {
-		const name = localStorage.getItem('sessionName')
-		if (!name) localStorage.setItem('sessionName', '3x3')
-		const type = localStorage.getItem('scrambleType')
-		if (!type) localStorage.setItem('scrambleType', '3x3')
+		const storedSessionName = localStorage.getItem('sessionName')
+		const storedScrambleType = localStorage.getItem('scrambleType')
+		if (storedSessionName && sessionName === '')
+			setSessionName(storedSessionName)
+		if (storedScrambleType && scrambleType === '')
+			setScrambleType(storedScrambleType)
 	}, [])
 }

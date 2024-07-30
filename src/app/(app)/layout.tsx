@@ -6,6 +6,8 @@ export default function  AppLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    
+
     return (
         <div className="flex overflow-hidden">
             <Navigate />

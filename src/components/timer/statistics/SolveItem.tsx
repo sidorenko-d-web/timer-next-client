@@ -2,24 +2,32 @@
 import React, { useState } from "react";
 import { Solve } from "@/classes/Solve";
 import { Reddit_Mono } from "next/font/google";
+import { ISolveResponse, TypeSolveRequest } from "@/types/solves.types";
 
 const reddit_Mono = Reddit_Mono({
   weight: "500",
   subsets: ["latin"],
 });
 
-export const SolveItem = () => {
+export const SolveItem = ({solve, index}: {solve: ISolveResponse, index: number}) => {
   const [isModalClosed, setIsModalClosed] = useState<boolean>(false);
+
+  const [time] = useState<Solve>(new Solve(
+    new Date(solve.time),
+    new Date(solve.createdAt),
+    solve.scramble,
+    solve.penalty!
+  ))
 
   return (
     <li
       className={`${reddit_Mono.className} flex gap-4 border-b last:border-b-none pb-1 mb-1 hover:bg-trueGray-700 transition-all`}
     >
-      #
+      #{index+1}
       <button
         className="w-full"
         onClick={() => setIsModalClosed(true)}
-      ></button>
+      >{time.timeToString()}</button>
       {isModalClosed && (
         <div
           onClick={() => setIsModalClosed(false)}

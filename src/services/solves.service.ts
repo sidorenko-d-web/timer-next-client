@@ -6,7 +6,6 @@ class SolveService {
 
   async create(data: TypeSolveRequest){
     const res = await axiosWithAuth.post<ISolveResponse>(`${this.BASE_URL}`, data)
-    console.log(res)
     return res
   }
 

@@ -14,6 +14,7 @@ const reddit_Mono = Reddit_Mono({
 export const Timer = () => {
 	const { time, isSpacePressed } = useTimer()
 
+
 	return (
 		<>
 			<div

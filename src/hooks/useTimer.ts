@@ -1,3 +1,4 @@
+'use client'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useEffect, useRef, useState } from 'react'
 
@@ -13,6 +14,7 @@ export function useTimer() {
 	const [isSpacePressed, setIsSpacePressed] = useState<boolean>(false)
 
 	const [time, setTime] = useState<string>('0.000')
+	const [dateTime, setDateTime] = useState<Date>(new Date(0))
 	let intervalId = useRef<NodeJS.Timeout>()
 	const queryClient = useQueryClient()
 
@@ -28,6 +30,7 @@ export function useTimer() {
 			return solveService.create(data)
 		},
 		onSuccess() {
+			queryClient.invalidateQueries({queryKey: ['session']})
 		},
 		onError(e){
 			console.log(e)
@@ -40,7 +43,7 @@ export function useTimer() {
 			if (isSolving) {
 				mutate({ 
 					sessionId: sessionId, 
-					time: new Date(time),
+					time: dateTime,
 					penalty: null,
 					scramble
 				 })
@@ -58,7 +61,9 @@ export function useTimer() {
 				setIsSolving(true)
 				const startTime = new Date().getTime()
 				intervalId.current = setInterval(() => {
-					setTime(startTimer(startTime))
+					const diff = startTimer(startTime)
+					setTime(diff.timeToString())
+					setDateTime(new Date(new Date().getTime() - startTime))
 				}, 1)
 			} else {
 				setIsSolving(false)
@@ -70,7 +75,7 @@ export function useTimer() {
 		const diff: Solve = new Solve()
 		diff.time = new Date(new Date().getTime() - startTime)
 
-		return diff.timeToString()
+		return diff
 	}
 
 	useEffect(() => {

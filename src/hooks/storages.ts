@@ -15,16 +15,16 @@ interface ISessionStorage {
 }
 
 export const useSessionStore = create<ISessionStorage>()(set => ({
-	sessionName: localStorage.getItem('sessionName') || '3x3',
+	sessionName: '',
 	setSessionName: (name: string) => {
+		localStorage.setItem('sessionName', name)
 		set({ sessionName: name })
-			localStorage.setItem('sessionName', name)
 
 	},
-	scrambleType: localStorage.getItem('scrambleType') || '3x3',
+	scrambleType: '',
 	setScrambleType: (type: string) => {
-		set({ scrambleType: type })
 		localStorage.setItem('scrambleType', type)
+		set({ scrambleType: type })
 	},
 	sessionId: '',
 	setSessionId: (type: string) => {
