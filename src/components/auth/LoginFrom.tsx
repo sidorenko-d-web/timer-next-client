@@ -1,12 +1,9 @@
-import { useMutation } from '@tanstack/react-query'
-import { Axios, AxiosError, AxiosRequestConfig } from 'axios'
-import { useRouter } from 'next/navigation'
 import type { Dispatch, SetStateAction } from 'react'
 import { type SubmitHandler, useForm } from 'react-hook-form'
 
-import { IAuthResponse, ILoginform } from '@/types/auth.types'
+import type { ILoginform } from '@/types/auth.types'
+import useAuth from './hooks/useAuth'
 
-import { authService } from '@/services/auth.service'
 
 export const LoginFrom = ({
 	setIsRegistered
@@ -17,21 +14,11 @@ export const LoginFrom = ({
 		mode: 'onChange'
 	})
 
-	const { push } = useRouter()
-
-	const { mutate, error, isError } = useMutation({
-		mutationKey: ['login'],
-		mutationFn(data: ILoginform) {
-			return authService.main('login', data)
-		},
-		onSuccess() {
-			reset()
-			push('/')
-		}
-	})
+    const {auth, authError, isAuthError} = useAuth('login')
+	
 
 	const onSubmit: SubmitHandler<ILoginform> = data => {
-		mutate(data)
+		auth({data, reset})
 	}
 
 	return (
@@ -40,11 +27,11 @@ export const LoginFrom = ({
 			onSubmit={handleSubmit(onSubmit)}
 		>
 			<h1 className=' text-4xl text-center font-semibold mb-6'>Log In</h1>
-			{isError && (
+			{isAuthError && (
 				<label className=' text-xl mb-2 ml-1 text-red-500 capitalize'>
 					{
 						// @ts-ignore
-						error.response.data.message
+						authError.response.data.message
 					}
 				</label>
 			)}
@@ -73,7 +60,7 @@ export const LoginFrom = ({
 					required: 'Password is required'
 				})}
 				className=' bg-dark-gray-bg rounded-xl px-4 py-2 mb-6 outline-none'
-				type='pass'
+				type='password'
 				id='pass'
 			/>
 			<button className=' bg-best-time-color rounded-full py-2'>Log In</button>
