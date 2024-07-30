@@ -1,4 +1,5 @@
-"use client";
+'use client'
+import { useScrambleStorage } from "@/hooks/storages";
 import { Reddit_Mono } from "next/font/google";
 
 const reddit_Mono = Reddit_Mono({
@@ -7,9 +8,11 @@ const reddit_Mono = Reddit_Mono({
 });
 
 export const ScrambleButton = () => {
+  
+	const { scramble } = useScrambleStorage()
   return (
-    <button>
-      <p className={`whitespace-pre-line text-2xl${reddit_Mono.className}`}></p>
+    <button >
+      <p className={`w-[55vw] text-3xl ${reddit_Mono.className}`}>{scramble}</p>
     </button>
   );
 };

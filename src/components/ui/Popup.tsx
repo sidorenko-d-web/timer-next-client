@@ -1,3 +1,5 @@
+'use client'
+
 import { usePopupStatus } from '@/hooks/storages'
 import React, { useEffect, useState } from 'react'
 

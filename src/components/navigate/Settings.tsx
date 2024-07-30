@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+'use client'
 import { AccountSettings } from "../../app/settings/AccountSettings";
 
 export const Settings = ({ windowSettings }: { windowSettings: string }) => {

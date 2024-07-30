@@ -1,11 +1,10 @@
 'use client'
-
 import { Reddit_Mono } from 'next/font/google'
 import React, { useEffect, useRef, useState } from 'react'
 
+import { useTimer } from '../../hooks/useTimer'
+
 import { SolveControls } from './SolveControls'
-import { Solve } from '@/classes/Solve'
-import { usePopupStatus } from '@/hooks/storages'
 
 const reddit_Mono = Reddit_Mono({
 	weight: '500',
@@ -13,67 +12,15 @@ const reddit_Mono = Reddit_Mono({
 })
 
 export const Timer = () => {
-	const [isSolving, setIsSolving] = useState<boolean>(false)
-	const [timerStopped, setTimerStopped] = useState<boolean>(false)
-	const [time, setTime] = useState<string>('0.000')
-	const [dateTime, setDateTime] = useState<Date>(new Date())
-	let intervalId = useRef<NodeJS.Timeout>()
-
-  const {popupStatus} = usePopupStatus()
-
-	const keyDown = (e: KeyboardEvent) => {
-		if(popupStatus) return
-    if (e.code === 'Space') {
-			if (isSolving) {
-				clearInterval(intervalId.current)
-				setTimerStopped(true)
-			}
-		}
-	}
-	const keyUp = (e: KeyboardEvent) => {
-		if(popupStatus) return
-		if (e.code === 'Space') {
-			if (!isSolving) {
-				setIsSolving(true)
-				const startTime = new Date().getTime()
-				intervalId.current = setInterval(() => {
-					setTime(startTimer(startTime))
-					setDateTime(new Date(new Date().getTime() - startTime))
-				}, 1)
-			} else {
-				setIsSolving(false)
-				setTimerStopped(false)
-			}
-		}
-	}
-
-	const startTimer = (startTime: number) => {
-		const diff = new Solve(
-			new Date(new Date().getTime() - startTime),
-			0,
-			'',
-			''
-		)
-		return diff.timeToString()
-	}
-
-	useEffect(() => {
-		document.addEventListener('keydown', keyDown)
-		document.addEventListener('keyup', keyUp)
-
-		return () => {
-			document.removeEventListener('keydown', keyDown)
-			document.removeEventListener('keyup', keyUp)
-		}
-	})
+	const { time, isSpacePressed } = useTimer()
 
 	return (
 		<>
 			<div
-				className={`${reddit_Mono.className} text-[116px] 2xl:text-[214px] max-h-[200px] flex justify-center items-center`}
+				className={`${reddit_Mono.className} ${isSpacePressed && 'text-red-600'} text-[116px] 2xl:text-[214px] max-h-[200px] flex justify-center items-end`}
 			>
-				{time.split('.')[0]}.
-				<span className='text-[80px]'>{time.split('.')[1]}</span>
+				<span>{time.split('.')[0]}.</span>
+				<span className='text-[80px] pb-3 2xl:pb-12'>{time.split('.')[1]}</span>
 			</div>
 			<SolveControls />
 		</>

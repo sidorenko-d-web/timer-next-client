@@ -1,4 +1,4 @@
-import { Solve } from "@/types/SolveInterface"
+import { Solve } from "@/classes/Solve"
 
 export const findAvg = (solves: Solve[], type: number): number => {
     if (solves.length >= type) {

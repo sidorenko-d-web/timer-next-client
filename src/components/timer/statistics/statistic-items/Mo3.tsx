@@ -1,5 +1,4 @@
 "use client";
-import { Solve } from "@/types/SolveInterface";
 import { convertTime } from "@/hooks/statisticFunctions";
 import React, { useEffect, useState } from "react";
 import { Reddit_Mono } from "next/font/google";

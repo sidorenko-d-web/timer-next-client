@@ -2,10 +2,11 @@ import { axiosWithAuth } from "@/api/interceptors"
 import type { ISolveResponse, TypeSolveRequest } from "@/types/solves.types"
 
 class SolveService {
-  private BASE_URL = '/sessions'
+  private BASE_URL = '/solves'
 
   async create(data: TypeSolveRequest){
     const res = await axiosWithAuth.post<ISolveResponse>(`${this.BASE_URL}`, data)
+    console.log(res)
     return res
   }
 

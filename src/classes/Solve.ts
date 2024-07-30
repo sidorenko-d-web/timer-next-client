@@ -1,20 +1,20 @@
 export class Solve {
     time: Date;
-    timestamp: number;
+    createdAt: Date;
     scramble: string;
-    penalty: string;
+    penalty: string | null;
     isPenaltied: boolean = false;
 
     constructor(
-        time: Date,
-        timestamp: number,
-        scramble: string,
-        penalty: string
+        time?: Date,
+        createdAt?: Date,
+        scramble?: string,
+        penalty?: string
     ) {
-        this.time = time;
-        this.timestamp = timestamp;
-        this.scramble = scramble;
-        this.penalty = penalty;
+        this.time = time ?? new Date(0);
+        this.createdAt = createdAt ?? new Date(0);
+        this.scramble = scramble ?? '';
+        this.penalty = penalty ?? '';
     }
 
     setPenalty(penalty: string): Solve {
@@ -32,7 +32,7 @@ export class Solve {
             this.penalty = penalty
         }
 
-        return new Solve(this.time, this.timestamp, this.scramble, this.penalty)
+        return new Solve(this.time, this.createdAt, this.scramble, this.penalty)
     }
 
     timeToString(): string {

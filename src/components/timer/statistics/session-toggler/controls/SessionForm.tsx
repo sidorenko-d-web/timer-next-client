@@ -1,4 +1,4 @@
-import { useMutation } from '@tanstack/react-query'
+'use client'
 import React, { Dispatch, SetStateAction, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
@@ -77,7 +77,7 @@ export default function SessionForm({
 						<option value='5x5'>5x5</option>
 						<option value='6x6'>6x6</option>
 						<option value='7x7'>7x7</option>
-						<option value='sq1'>Square-1</option>
+						<option value='square-1'>Square-1</option>
 						<option value='skewb'>Skewb</option>
 						<option value='megaminx'>Megaminx</option>
 						<option value='clock'>Clock</option>

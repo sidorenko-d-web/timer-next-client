@@ -1,5 +1,6 @@
+'use clietn'
+
 import { useSessionStore } from '@/hooks/storages'
-import React from 'react'
 
 export const SessionItem = ({
 	sessionName,
@@ -10,14 +11,12 @@ export const SessionItem = ({
 	scrambleType: string
 	setIsShowed: React.Dispatch<React.SetStateAction<boolean>>
 }) => {
-  const { setSessionName, setScrambleType } = useSessionStore()
+	const { setSessionName, setScrambleType } = useSessionStore()
 	const onClick = () => {
 		setIsShowed(false)
-    setSessionName(sessionName),
-    setScrambleType(scrambleType)
+		setSessionName(sessionName), setScrambleType(scrambleType)
 	}
 
-  
 	return (
 		<li
 			onClick={onClick}

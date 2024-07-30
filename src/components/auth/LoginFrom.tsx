@@ -1,3 +1,4 @@
+'use client'
 import type { Dispatch, SetStateAction } from 'react'
 import { type SubmitHandler, useForm } from 'react-hook-form'
 

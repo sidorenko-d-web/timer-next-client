@@ -1,4 +1,4 @@
-import { Solve } from "@/types/SolveInterface";
+'use client'
 import { findAvg, findBestAvg } from "@/hooks/statisticFunctions";
 import { convertTime } from "@/hooks/statisticFunctions";
 import React, { useEffect, useState } from "react";

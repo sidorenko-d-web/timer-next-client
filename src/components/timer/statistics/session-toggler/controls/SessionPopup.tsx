@@ -1,6 +1,6 @@
+'use client'
 import { useQuery } from '@tanstack/react-query'
 
-import { useSessionStore } from '@/hooks/storages'
 
 import { SessionItem } from './SessionItem'
 
