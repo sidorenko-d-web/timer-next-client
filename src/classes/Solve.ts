@@ -6,37 +6,21 @@ export class Solve {
     isPenaltied: boolean = false;
 
     constructor(
-        time?: Date,
+        time: Date,
         createdAt?: Date,
         scramble?: string,
         penalty?: string
     ) {
-        this.time = time ?? new Date(0);
         this.createdAt = createdAt ?? new Date(0);
         this.scramble = scramble ?? '';
         this.penalty = penalty ?? '';
+        this.time = this.penalty === 'plus2' ? new Date(time!.setSeconds(time!.getSeconds() + 2)) : time  
     }
 
-    setPenalty(penalty: string): Solve {
-        if(this.penalty !== ""){
-            if (this.penalty == "+2") {
-                this.time.setSeconds(this.time.getSeconds() - 2);
-            }
-            this.isPenaltied = false;
-            this.penalty = "";
-        }else{
-            if(penalty == '+2'){
-                this.time.setSeconds(this.time.getSeconds() + 2);
-            }
-            this.isPenaltied = true;
-            this.penalty = penalty
-        }
-
-        return new Solve(this.time, this.createdAt, this.scramble, this.penalty)
-    }
+    
 
     timeToString(): string {
-        if (this.penalty === "DNF") {
+        if (this.penalty === "dnf") {
             return this.penalty;
         }
 
@@ -57,7 +41,7 @@ export class Solve {
             string = `0.${ms}`;
         }
         
-        if(this.penalty === "+2"){
+        if(this.penalty === "plus2"){
             return `+${string}`
         }
         return string

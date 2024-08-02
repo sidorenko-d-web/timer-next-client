@@ -72,7 +72,7 @@ export function useTimer() {
 	}
 
 	const startTimer = (startTime: number) => {
-		const diff: Solve = new Solve()
+		const diff: Solve = new Solve(new Date(0))
 		diff.time = new Date(new Date().getTime() - startTime)
 
 		return diff
@@ -88,5 +88,5 @@ export function useTimer() {
 		}
 	})
 
-	return { time, isSpacePressed }
+	return { time, isSpacePressed, isSolving }
 }

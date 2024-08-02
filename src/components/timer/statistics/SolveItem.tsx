@@ -9,25 +9,52 @@ const reddit_Mono = Reddit_Mono({
   subsets: ["latin"],
 });
 
-export const SolveItem = ({solve, index}: {solve: ISolveResponse, index: number}) => {
+export const SolveItem = ({solve, index}: {solve: ISolveResponse, index: number,}) => {
   const [isModalClosed, setIsModalClosed] = useState<boolean>(false);
 
-  const [time] = useState<Solve>(new Solve(
-    new Date(solve.time),
-    new Date(solve.createdAt),
-    solve.scramble,
-    solve.penalty!
-  ))
+  const timeToString = (): string =>  {
+    if(!solve) return ''
+
+    if (solve.penalty === "dnf") {
+        return 'DNF';
+    }
+    const time = new Date(solve.time)
+    
+    if(solve.penalty === "plus2"){
+      time.setSeconds(time.getSeconds() + 2)
+  }
+
+    let string: string
+    let ms = time.getMilliseconds().toString();
+    if (ms.length == 1) ms = "00" + ms.toString();
+    else if (ms.length == 2) ms = "0" + ms.toString();
+
+    if (time.getMinutes()) {
+        if (time.getSeconds() < 10) {
+            string = `${time.getMinutes()}:0${time.getSeconds()}.${ms}`;
+        }
+        string = `${time.getMinutes()}:${time.getSeconds()}.${ms}`;
+    } else if (time.getSeconds()) {
+        string = `${time.getSeconds()}.${ms}`;
+    } else {
+        string = `0.${ms}`;
+    }
+    
+    if(solve.penalty === "plus2"){
+        return `+${string}`
+    }
+    return string
+}
 
   return (
     <li
       className={`${reddit_Mono.className} flex gap-4 border-b last:border-b-none pb-1 mb-1 hover:bg-trueGray-700 transition-all`}
     >
-      #{index+1}
+      #{index}
       <button
         className="w-full"
         onClick={() => setIsModalClosed(true)}
-      >{time.timeToString()}</button>
+      >{timeToString()}</button>
       {isModalClosed && (
         <div
           onClick={() => setIsModalClosed(false)}

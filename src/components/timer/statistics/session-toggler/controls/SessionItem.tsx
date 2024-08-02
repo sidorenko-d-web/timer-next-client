@@ -12,10 +12,14 @@ export const SessionItem = ({
 	scrambleType: string
 	setIsShowed: React.Dispatch<React.SetStateAction<boolean>>
 }) => {
-	const { setSessionName, setScrambleType } = useSessionStore()
+
+	const queryClient = useQueryClient()
+
+	const { setSessionName, setScrambleType} = useSessionStore()
 	const onClick = () => {
 		setIsShowed(false)
-		setSessionName(sessionName), setScrambleType(scrambleType)
+		setSessionName(sessionName)
+		setScrambleType(scrambleType)
 	}
 
 	return (

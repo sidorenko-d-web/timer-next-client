@@ -12,7 +12,7 @@ const reddit_Mono = Reddit_Mono({
 })
 
 export const Timer = () => {
-	const { time, isSpacePressed } = useTimer()
+	const { time, isSpacePressed, isSolving } = useTimer()
 
 
 	return (
@@ -23,7 +23,7 @@ export const Timer = () => {
 				<span>{time.split('.')[0]}.</span>
 				<span className='text-[80px] pb-3 2xl:pb-12'>{time.split('.')[1]}</span>
 			</div>
-			<SolveControls />
+			<div className={`${isSolving ? 'opacity-0 transition-opacity' : 'opacity-1 transition-opacity'} 'transition-opacity`}><SolveControls /></div>
 		</>
 	)
 }

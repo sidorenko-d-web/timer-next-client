@@ -1,7 +1,7 @@
 
 import { create } from 'zustand'
 
-import { TypeSolveRequest } from '@/types/solves.types'
+import { ISolveResponse, TypeSolveRequest } from '@/types/solves.types'
 
 interface ISessionStorage {
 	sessionName: string
@@ -10,8 +10,8 @@ interface ISessionStorage {
 	setScrambleType: (name: string) => void
 	sessionId: string
 	setSessionId: (name: string) => void
-	sessionSolves: TypeSolveRequest[]
-	setSessionSolves: (solve: TypeSolveRequest[]) => void
+	lastSolve: {id: string, penalty: string | null}
+	setLastSolve: (solve: {id: string, penalty: string | null}) => void
 }
 
 export const useSessionStore = create<ISessionStorage>()(set => ({
@@ -30,9 +30,13 @@ export const useSessionStore = create<ISessionStorage>()(set => ({
 	setSessionId: (type: string) => {
 		set({ sessionId: type })
 	},
-	sessionSolves: [],
-	setSessionSolves: (solves: TypeSolveRequest[]) => {
-		set({ sessionSolves: solves })
+	lastSolve: {
+		id: '',
+		penalty: null
+
+	},
+	setLastSolve: (solve: {id: string, penalty: string | null}) => {
+		set({ lastSolve: solve })
 	}
 }))
 
