@@ -1,4 +1,5 @@
 import Cookies from 'js-cookie'
+import {cookies} from 'next/headers'
 
 export enum EnumTokens {
 	'ACCESS_TOKEN' = 'accessToken',
@@ -11,10 +12,8 @@ export const getAccessToken = () => {
 }
 
 export const saveTokenStorage = (accessToken: string) => {
-	Cookies.set(EnumTokens.ACCESS_TOKEN, accessToken, {
-		sameSite: 'none',
-		expires: 1000*60*60
-	})
+	
+	cookies().set(EnumTokens.ACCESS_TOKEN, accessToken)
 }
 
 export const removefromStorage = () => {
