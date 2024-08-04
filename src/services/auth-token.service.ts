@@ -7,7 +7,7 @@ enum EnumTokens {
 }
 
 export const getAccessToken = async () => {
-	const accessToken = cookies().get(EnumTokens.ACCESS_TOKEN)
+	const accessToken = await cookies().get(EnumTokens.ACCESS_TOKEN)?.value
 	return accessToken || null
 }
 
