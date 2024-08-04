@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { EnumTokens } from "./services/auth-token.service";
+enum EnumTokens {
+	'ACCESS_TOKEN' = 'accessToken',
+	'REFRESH_TOKEN' = 'refreshToken'
+}
 
 export async function middleware(
   request: NextRequest,

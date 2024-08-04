@@ -1,21 +1,22 @@
-import Cookies from 'js-cookie'
+'use server'
 import {cookies} from 'next/headers'
 
-export enum EnumTokens {
+enum EnumTokens {
 	'ACCESS_TOKEN' = 'accessToken',
 	'REFRESH_TOKEN' = 'refreshToken'
 }
 
-export const getAccessToken = () => {
-	const accessToken = Cookies.get(EnumTokens.ACCESS_TOKEN)
+export const getAccessToken = async () => {
+	const accessToken = cookies().get(EnumTokens.ACCESS_TOKEN)
 	return accessToken || null
 }
 
-export const saveTokenStorage = (accessToken: string) => {
+export const saveTokenStorage = async (accessToken: string) => {
 	
 	cookies().set(EnumTokens.ACCESS_TOKEN, accessToken)
 }
 
-export const removefromStorage = () => {
-	Cookies.remove(EnumTokens.ACCESS_TOKEN)
+export const removefromStorage = async () => {
+	cookies().delete(EnumTokens.ACCESS_TOKEN)
 }
+ 
