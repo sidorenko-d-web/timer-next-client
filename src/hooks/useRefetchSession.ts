@@ -8,9 +8,8 @@ export default function useRefetchSession() {
 	const { sessionName, setSessionId, setLastSolve, lastSolve } =
 		useSessionStore()
 
-
 	const queryClient = useQueryClient()
-	const { data: session } = useQuery({
+	const { data: session, status: newSolveStatus } = useQuery({
 		queryKey: ['session'],
 		queryFn: async () => {
 			const res = await sessionService.getSessionOfUser(sessionName)
@@ -27,7 +26,8 @@ export default function useRefetchSession() {
 			queryClient.invalidateQueries({ queryKey: ['session'] })
 		}, [sessionName])
 	}
+
 	fetchData()
 
-	return { session }
+	return { session, newSolveStatus }
 }

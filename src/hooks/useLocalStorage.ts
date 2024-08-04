@@ -9,9 +9,17 @@ export function useLocalStorage() {
 	useEffect(() => {
 		const storedSessionName = localStorage.getItem('sessionName')
 		const storedScrambleType = localStorage.getItem('scrambleType')
-		if (storedSessionName && sessionName === '')
+		if (storedSessionName && sessionName !== '') {
 			setSessionName(storedSessionName)
-		if (storedScrambleType && scrambleType === '')
+		} else {
+			setSessionName('3x3')
+			localStorage.setItem('sessionName', '3x3')
+		}
+		if (storedScrambleType && scrambleType !== '') {
 			setScrambleType(storedScrambleType)
+		} else {
+			setScrambleType('3x3')
+			localStorage.setItem('scrambleType', '3x3')
+		}
 	}, [])
 }

@@ -22,7 +22,7 @@ export function useTimer() {
 
 	const { scramble } = useScrambleStorage()
 
-	const { sessionId, scrambleType } = useSessionStore()
+	const { sessionId } = useSessionStore()
 
 	const { mutate } = useMutation({
 		mutationKey: ['add-solve'],

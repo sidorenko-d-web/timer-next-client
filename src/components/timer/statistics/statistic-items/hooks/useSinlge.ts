@@ -31,6 +31,7 @@ export function useSinlge(solves: ISolveResponse[]) {
 				best = curr
 			}
 		}
+		if(best !== Infinity)
 		setBestSingle(new Solve(new Date(best), new Date(), '', '').timeToString())
 	}, [solves])
 

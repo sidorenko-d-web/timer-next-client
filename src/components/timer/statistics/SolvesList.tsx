@@ -1,11 +1,8 @@
 'use client'
 
-import { useEffect } from 'react'
-
-import { ISolveResponse, TypeSolveRequest } from '@/types/solves.types'
+import type { ISolveResponse } from '@/types/solves.types'
 
 import { SolveItem } from './SolveItem'
-import { Solve } from '@/classes/Solve'
 
 export const SolvesList = ({ solves }: { solves: ISolveResponse[] }) => {
 	return (
