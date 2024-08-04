@@ -8,7 +8,7 @@ import {
 import { authService } from "@/services/auth.service";
 
 const options: CreateAxiosDefaults = {
-  baseURL: "http://localhost:5000/timer-api",
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
   headers: {
     "Content-Type": "application/json",
   },
