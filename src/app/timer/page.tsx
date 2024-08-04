@@ -7,7 +7,7 @@ import { StatsWrapper } from '@/components/timer/statistics/StatsWrapper'
 import { useLocalStorage } from '@/hooks/useLocalStorage'
 import { useSettings } from '@/hooks/useSettings'
 
-export function App() {
+export default function App() {
 	useLocalStorage()
 	useSettings()
 

@@ -19,7 +19,7 @@ export default function useAuth(type: 'login' | 'register') {
 		},
 		onSuccess(data, { reset }) {
 			reset()
-			push('/')
+			push('/timer')
 		}
 	})
 	return { auth, authError, isAuthError }

@@ -14,7 +14,7 @@ export async function middleware(
   
   
   if(isAuthPage && refreshToken){
-    return NextResponse.redirect(new URL('/', url))
+    return NextResponse.redirect(new URL('/timer', url))
   }
 
   if(isAuthPage){
