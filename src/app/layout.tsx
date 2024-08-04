@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Navigate } from "@/components/navigate/Navigate";
 import { SITE_NAME } from "@/constants/ceo.constants";
 import { Providers } from "../app/providers";
 

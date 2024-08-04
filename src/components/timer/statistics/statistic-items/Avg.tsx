@@ -1,14 +1,13 @@
 'use client'
-import { convertTime } from "@/hooks/statisticFunctions";
-import React, { useEffect, useState } from "react";
 import { Reddit_Mono } from "next/font/google";
 import { ISolveResponse } from "@/types/solves.types";
-import { useSessionStore } from "@/hooks/storages";
 import { useAvg } from "./hooks/useAvg";
 
 const reddit_Mono = Reddit_Mono({
   weight: "500",
   subsets: ["latin"],
+  
+	display: 'swap'
 });
 
 export const Avg = ({ solves, type }: { solves: ISolveResponse[], type: number }) => {

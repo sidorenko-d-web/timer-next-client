@@ -9,7 +9,8 @@ import { useFindMo3 } from './hooks/useMO3'
 
 const reddit_Mono = Reddit_Mono({
 	weight: '500',
-	subsets: ['latin']
+	subsets: ['latin'],
+	display: 'swap'
 })
 
 export const Mo3 = ({ solves }: { solves: ISolveResponse[] }) => {

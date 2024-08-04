@@ -5,6 +5,7 @@ import { Reddit_Mono } from "next/font/google";
 const reddit_Mono = Reddit_Mono({
   weight: "500",
   subsets: ["latin"],
+	display: 'swap'
 });
 
 export const ScrambleButton = () => {

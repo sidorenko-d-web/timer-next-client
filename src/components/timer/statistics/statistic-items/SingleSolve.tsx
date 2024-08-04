@@ -10,7 +10,8 @@ import { Solve } from '@/classes/Solve'
 
 const reddit_Mono = Reddit_Mono({
 	weight: '500',
-	subsets: ['latin']
+	subsets: ['latin'],
+	display: 'swap'
 })
 
 export const SingleSolve = ({ solves }: { solves: ISolveResponse[] }) => {

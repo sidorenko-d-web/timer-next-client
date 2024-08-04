@@ -7,6 +7,7 @@ import { ISolveResponse, TypeSolveRequest } from "@/types/solves.types";
 const reddit_Mono = Reddit_Mono({
   weight: "500",
   subsets: ["latin"],
+	display: 'swap'
 });
 
 export const SolveItem = ({solve, index}: {solve: ISolveResponse, index: number,}) => {

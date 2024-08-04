@@ -1,7 +1,6 @@
 'use client'
 
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { TypeSettingsRequest } from '@/types/settings.types'

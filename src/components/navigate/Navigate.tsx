@@ -7,7 +7,6 @@ import {
 	faTrophy,
 	faUserGroup
 } from '@fortawesome/free-solid-svg-icons'
-import { useState } from 'react'
 
 import Popup from '../ui/Popup'
 

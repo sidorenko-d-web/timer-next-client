@@ -2,8 +2,6 @@ import { useEffect, useState } from 'react'
 
 import { ISolveResponse } from '@/types/solves.types'
 
-import { convertTime } from '@/hooks/statisticFunctions'
-
 import { Solve } from '@/classes/Solve'
 
 export function useSinlge(solves: ISolveResponse[]) {

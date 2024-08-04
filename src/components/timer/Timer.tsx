@@ -11,7 +11,9 @@ import { SolveControls } from './SolveControls'
 
 const reddit_Mono = Reddit_Mono({
 	weight: '500',
-	subsets: ['latin']
+	subsets: ['latin'],
+	display: 'swap'
+
 })
 
 export const Timer = () => {

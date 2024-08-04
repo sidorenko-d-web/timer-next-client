@@ -1,5 +1,5 @@
 'use client'
-import React, { Dispatch, SetStateAction, useEffect } from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { TypeSessionRequest } from '@/types/session.types'
@@ -7,8 +7,6 @@ import { TypeSessionRequest } from '@/types/session.types'
 import { useSessionStore } from '@/hooks/storages'
 
 import useMutateSession from '../hooks/useMutateSession'
-
-import { sessionService } from '@/services/session.service'
 
 export default function SessionForm({
 	prevName,
@@ -25,15 +23,13 @@ export default function SessionForm({
 
 	const isUpdate = Boolean(prevName)
 
-	const { sessionName, scrambleType, setSessionName, setScrambleType } =
+	const { sessionName, setSessionName, setScrambleType } =
 		useSessionStore()
 
 	const {
 		createSession,
-		createError,
 		updateSession,
 		updateError,
-    isSuccess
 	} = useMutateSession(sessionName, setSessionName, setScrambleType)
 
 	const onSubmit = (data: TypeSessionRequest) => {
