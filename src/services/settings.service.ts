@@ -5,7 +5,7 @@ class SettingsService {
   private BASE_URL = '/settings'
 
   async updateSession(settingsId: string, data: TypeSettingsRequest){
-    const res = await axiosWithAuth.post<ISettingsResponse>(`${this.BASE_URL}/${settingsId}`, data)
+    const res = await axiosWithAuth.put<ISettingsResponse>(`${this.BASE_URL}/${settingsId}`, data)
     return res
   }
 }

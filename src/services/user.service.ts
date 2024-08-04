@@ -5,20 +5,20 @@ import { ISettingsResponse } from '@/types/settings.types'
 
 export interface IUserResponse {
 	user: IUser
-	settings: ISettingsResponse
+	settings: ISettingsResponse[]
 }
 
 class UserService {
-	private BASE_URL = '/user/profile'
+	private BASE_URL = '/user'
 
 	async getUser() {
-		const response = await axiosWithAuth.get<IUserResponse>(this.BASE_URL)
-		return response.data
+		const res = await axiosWithAuth.get<IUserResponse>(this.BASE_URL)
+		return res.data
 	}
 
 	async update(data: TypeUserForm) {
-		const response = await axiosWithAuth.put(this.BASE_URL, data)
-		return response.data
+		const res = await axiosWithAuth.put(this.BASE_URL, data)
+		return res.data
 	}
 }
 

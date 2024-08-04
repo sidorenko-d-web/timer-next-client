@@ -37,7 +37,6 @@ export const SolveControls = () => {
 
   const penalty = (penalty: string, e: any) => {
     e.target.blur()
-    console.log(penalty)
     const penaltyReq = lastSolve.penalty === null ? penalty : null
     updateSolve({ penalty: penaltyReq, id: lastSolve.id })
   }

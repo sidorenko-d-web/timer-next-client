@@ -9,7 +9,8 @@ export class Solve {
         time: Date,
         createdAt?: Date,
         scramble?: string,
-        penalty?: string
+        penalty?: string | null
+
     ) {
         this.createdAt = createdAt ?? new Date(0);
         this.scramble = scramble ?? '';

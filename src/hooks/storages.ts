@@ -1,6 +1,6 @@
-
 import { create } from 'zustand'
 
+import { ISettingsResponse } from '@/types/settings.types'
 import { ISolveResponse, TypeSolveRequest } from '@/types/solves.types'
 
 interface ISessionStorage {
@@ -10,8 +10,8 @@ interface ISessionStorage {
 	setScrambleType: (name: string) => void
 	sessionId: string
 	setSessionId: (name: string) => void
-	lastSolve: {id: string, penalty: string | null}
-	setLastSolve: (solve: {id: string, penalty: string | null}) => void
+	lastSolve: { id: string; penalty: string | null }
+	setLastSolve: (solve: { id: string; penalty: string | null }) => void
 }
 
 export const useSessionStore = create<ISessionStorage>()(set => ({
@@ -19,7 +19,6 @@ export const useSessionStore = create<ISessionStorage>()(set => ({
 	setSessionName: (name: string) => {
 		localStorage.setItem('sessionName', name)
 		set({ sessionName: name })
-
 	},
 	scrambleType: '',
 	setScrambleType: (type: string) => {
@@ -33,9 +32,8 @@ export const useSessionStore = create<ISessionStorage>()(set => ({
 	lastSolve: {
 		id: '',
 		penalty: null
-
 	},
-	setLastSolve: (solve: {id: string, penalty: string | null}) => {
+	setLastSolve: (solve: { id: string; penalty: string | null }) => {
 		set({ lastSolve: solve })
 	}
 }))
@@ -57,5 +55,20 @@ interface IScrambleStorage {
 
 export const useScrambleStorage = create<IScrambleStorage>()(set => ({
 	scramble: '',
-	setScramble: (scramble: string) => set({ scramble: scramble })
+	setScramble: (scramble: string) => set({ scramble })
+}))
+
+interface ISettingsStorage {
+	settingsId: string,
+	setSettingsId: (settingsId: string) => void,
+	isTimeShowed: boolean
+	setIsTimeShowed: (isTimeShowed: boolean) => void,
+
+}
+
+export const useSettingsStorage = create<ISettingsStorage>()(set => ({
+	settingsId: '',
+	setSettingsId: (settingsId: string) => set({ settingsId }),
+	isTimeShowed: false,
+	setIsTimeShowed: (isTimeShowed: boolean) => set({ isTimeShowed })
 }))
