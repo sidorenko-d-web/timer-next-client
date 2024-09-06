@@ -51,11 +51,15 @@ export const usePopupStatus = create<IPopupStatus>()(set => ({
 interface IScrambleStorage {
 	scramble: string
 	setScramble: (scramble: string) => void
+	needNewScramble: boolean
+	setNeedNewScramble: (value: boolean) => void
 }
 
 export const useScrambleStorage = create<IScrambleStorage>()(set => ({
 	scramble: '',
-	setScramble: (scramble: string) => set({ scramble })
+	setScramble: (scramble: string) => set({ scramble }),
+	needNewScramble: false,
+	setNeedNewScramble: (value: boolean) => set({ needNewScramble: value }),
 }))
 
 interface ISettingsStorage {

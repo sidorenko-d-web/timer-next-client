@@ -25,9 +25,9 @@ export function useTimer() {
 
 	const { popupStatus } = usePopupStatus()
 
-	const { scramble } = useScrambleStorage()
+	const { scramble, setNeedNewScramble } = useScrambleStorage()
 
-	const { sessionId } = useSessionStore()
+	const { sessionId, lastSolve, setLastSolve } = useSessionStore()
 
 	const { mutate } = useMutation({
 		mutationKey: ['add-solve'],
@@ -41,6 +41,10 @@ export function useTimer() {
 			console.log(e)
 		}
 	})
+
+	useEffect(() => {
+		console.log('lastSolve')
+	}, [lastSolve])
 
 	const keyDown = (e: KeyboardEvent) => {
 		if (popupStatus) return
@@ -70,13 +74,15 @@ export function useTimer() {
 
 	const handleStart = () => {
 		if (isSolving) {
-			mutate({
+			clearInterval(intervalId.current)
+			const solve = {
 				sessionId: sessionId,
 				time: dateTime,
 				penalty: null,
 				scramble
-			})
-			clearInterval(intervalId.current)
+			}
+			mutate(solve)
+			setNeedNewScramble(true)
 		} else {
 			setIsSpacePressed(true)
 		}
