@@ -17,10 +17,14 @@ const reddit_Mono = Reddit_Mono({
 export const SingleSolve = ({ solves }: { solves: ISolveResponse[] }) => {
 	const { single, bestSingle } = useSinlge(solves)
 	return (
-		<li className='flex justify-between border-b pb-2'>
-			<h3 className='w-1/3'>Единичная</h3>
-			<button className={reddit_Mono.className}>{single}</button>
-			<button className={`${reddit_Mono.className} text-best-time-color`}>
+		<li className='flex justify-between border-b pb-2 gap-1 md:gap-0'>
+			<h3 className='md:w-1/3  text-sm md:text-base'>Единичная</h3>
+			<button className={`${reddit_Mono.className} text-sm md:text-base`}>
+				{single}
+			</button>
+			<button
+				className={`${reddit_Mono.className} text-best-time-color text-sm md:text-base`}
+			>
 				{bestSingle}
 			</button>
 		</li>

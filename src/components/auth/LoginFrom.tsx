@@ -1,10 +1,11 @@
 'use client'
+
 import type { Dispatch, SetStateAction } from 'react'
 import { type SubmitHandler, useForm } from 'react-hook-form'
 
 import type { ILoginform } from '@/types/auth.types'
-import useAuth from './hooks/useAuth'
 
+import useAuth from './hooks/useAuth'
 
 export const LoginFrom = ({
 	setIsRegistered
@@ -15,16 +16,15 @@ export const LoginFrom = ({
 		mode: 'onChange'
 	})
 
-    const {auth, authError, isAuthError} = useAuth('login')
-	
+	const { auth, authError, isAuthError, isPending } = useAuth('login')
 
 	const onSubmit: SubmitHandler<ILoginform> = data => {
-		auth({data, reset})
+		auth({ data, reset })
 	}
 
 	return (
 		<form
-			className='bg-gray-bg flex z-40 flex-col p-8 w-3/12 rounded-3xl'
+			className='bg-gray-bg flex z-40 flex-col p-8 w-full mx-4 md:m-0 md:w-3/12 rounded-3xl'
 			onSubmit={handleSubmit(onSubmit)}
 		>
 			<h1 className=' text-4xl text-center font-semibold mb-6'>Log In</h1>
@@ -32,7 +32,7 @@ export const LoginFrom = ({
 				<label className=' text-xl mb-2 ml-1 text-red-500 capitalize'>
 					{
 						// @ts-ignore
-						authError.response.data.message
+						authError?.response?.data?.message
 					}
 				</label>
 			)}
@@ -64,11 +64,17 @@ export const LoginFrom = ({
 				type='password'
 				id='pass'
 			/>
-			<button className=' bg-best-time-color rounded-full py-2'>Log In</button>
 			<button
+				disabled={isPending}
+				className=' bg-best-time-color rounded-full py-2 active:scale-95 active:opacity-90'
+			>
+				{isPending ? 'Loading...' : 'Log In'}
+			</button>
+			<button
+				disabled={isPending}
 				onClick={() => setIsRegistered(false)}
 				type='button'
-				className=' underline text-sm text-trueGray-400 mt-4'
+				className=' underline text-sm text-trueGray-400 mt-4 0'
 			>
 				Havent registered yet? Click here
 			</button>

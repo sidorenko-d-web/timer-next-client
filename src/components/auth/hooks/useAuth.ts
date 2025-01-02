@@ -12,6 +12,7 @@ export default function useAuth(type: 'login' | 'register') {
 		mutate: auth,
 		error: authError,
 		isError: isAuthError,
+		isPending
 	} = useMutation({
 		mutationKey: [type],
 		mutationFn({ data }: { data: ILoginform | IRegform; reset: () => void }) {
@@ -20,7 +21,10 @@ export default function useAuth(type: 'login' | 'register') {
 		onSuccess(data, { reset }) {
 			reset()
 			push('/timer')
+		},
+		onError(error){
+			alert(JSON.stringify(error).slice(0, 400))
 		}
 	})
-	return { auth, authError, isAuthError }
+	return { auth, authError, isAuthError, isPending }
 }
