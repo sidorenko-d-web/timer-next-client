@@ -10,7 +10,7 @@ export const SessionStats = ({solves}: {solves: ISolveResponse[]}) => {
 
 
   return (
-    <div className="flex flex-col gap-2 w-4/12">
+    <div className="hidden md:flex flex-col gap-2 w-4/12">
       <h3 className="text-xl">
         Всего сборок: <span className="font-bold"></span>
       </h3>

@@ -13,7 +13,7 @@ export const ScrambleButton = () => {
 	const { scramble } = useScrambleStorage()
   return (
     <button >
-      <p className={`w-[55vw] text-3xl ${reddit_Mono.className}`}>{scramble}</p>
+      <p className={` w-full md:w-[55vw] text-sm md:text-3xl ${reddit_Mono.className}`}>{scramble}</p>
     </button>
   );
 };

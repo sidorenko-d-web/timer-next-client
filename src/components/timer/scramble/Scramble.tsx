@@ -39,7 +39,7 @@ export const Scramble = () => {
 	}
 
 	return (
-		<div className='flex gap-2 items-start pl-16 pr-8 '>
+		<div className='flex gap-2 items-start px-4 md:pl-16 md:pr-8 '>
 			<ScrambleButton />
 			<PrevButton
 				handleFunction={prevScrambleHandle}
