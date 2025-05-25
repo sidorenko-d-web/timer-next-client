@@ -1,5 +1,4 @@
 import axios, { CreateAxiosDefaults } from 'axios'
-import { NextResponse } from 'next/server'
 
 import { errorCatch } from './errors'
 import {
@@ -22,10 +21,11 @@ const axiosWithAuth = axios.create(options)
 
 axiosWithAuth.interceptors.request.use(async config => {
 	const accessToken = await getAccessToken()
+
 	if (config?.headers && accessToken) {
 		config.headers.Authorization = `Bearer ${accessToken}`
 	}
-
+	console.log(config)
 	return config
 })
 

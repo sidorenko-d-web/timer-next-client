@@ -14,6 +14,8 @@ export async function middleware(
 
   const isAuthPage = url.includes('/auth')
   
+  
+  
   if(isAuthPage && refreshToken){
     return NextResponse.redirect(new URL('/timer', url))
   }
@@ -31,5 +33,5 @@ export async function middleware(
 }
 
 export const config = {
-  matcher: ['/', '/auth/:path', '/timer']
+  matcher: ['/', '/auth/:path']
 }
