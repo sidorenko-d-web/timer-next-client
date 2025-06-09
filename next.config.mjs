@@ -5,13 +5,7 @@ const nextConfig = {
       // Basic redirect
       {
         source: '/',
-        destination: '/timer',
-        permanent: true,
-      },
-      // Wildcard path matching
-      {
-        source: '/blog/:slug',
-        destination: '/news/:slug',
+        destination: '/auth',
         permanent: true,
       },
     ]
